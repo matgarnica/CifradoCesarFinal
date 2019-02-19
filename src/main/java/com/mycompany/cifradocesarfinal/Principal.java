@@ -18,7 +18,7 @@ public class Principal {
     public static char[] definirAlfabeto(){
         
         char[] arrayAlfabeto;
-        arrayAlfabeto = "abcdefghijklmnñopqrstuvwxyz".toCharArray();
+        arrayAlfabeto = " !\"#$%&\\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\\\]^_`abcdefghijklmnopqrstuvwxyz{|}~".toCharArray();
         
         return arrayAlfabeto;
     }
@@ -31,6 +31,12 @@ public class Principal {
         
         mensajeCaracteres = mensajeCadena.toCharArray();
         mensajeCadena = "";
+        if(clave < 0){
+            clave = clave*-1;
+        }
+        if(clave > arrayAlfabeto.length){
+            clave = clave%arrayAlfabeto.length;
+        }
 
         for (int x=0; x<mensajeCaracteres.length; x++){
             indiceArray = new String(arrayAlfabeto).indexOf(mensajeCaracteres[x]) + clave;
@@ -52,6 +58,12 @@ public class Principal {
         
         mensajeCaracteres = mensajeCadena.toCharArray();
         mensajeCadena = "";
+        if(clave < 0){
+            clave = clave*-1;
+        }
+        if(clave > arrayAlfabeto.length){
+            clave = clave%arrayAlfabeto.length;
+        }
 
         for (int x=0; x<mensajeCaracteres.length; x++){
             indiceArray = new String(arrayAlfabeto).indexOf(mensajeCaracteres[x]) - clave;
