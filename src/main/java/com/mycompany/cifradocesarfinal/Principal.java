@@ -36,6 +36,32 @@ public class Principal {
      */
     protected static int indiceArray;
     
+    public static void menuOpciones(){
+        while(1==1){
+            Scanner entrada = new Scanner(System.in);
+            String accion;
+            System.out.print("\nCifrado César - Elija una opción:\nEncriptar(e), Desencriptar(d), Salir(s): "); 
+            accion = entrada.nextLine();
+            if(accion.equals("e")){
+                System.out.print("Escriba el mensaje para encriptar: ");
+                mensajeCadena = entrada.nextLine();
+                System.out.print("Escriba una clave numérica: ");
+                clave = entrada.nextInt();
+                System.out.println("Mensaje encriptado: " + encriptarMensaje(mensajeCadena,clave));
+            }else if(accion.equals("d")){
+                System.out.print("Escriba el mensaje para desencriptar: ");
+                mensajeCadena = entrada.nextLine();
+                System.out.print("Escriba una clave numérica: ");
+                clave = entrada.nextInt();
+                System.out.println("Mensaje desencriptado: " + desencriptarMensaje(mensajeCadena,clave));
+            }else if(accion.equals("s")){
+                System.exit(0);
+            }else{
+                System.out.print("Opción no válida.\n");
+            }
+        }
+    }
+    
     /**
     * Método para definir el alfabeto
     * @return arrayAlfabeto Devuelve el array con los caracteres del alfabeto
@@ -103,31 +129,7 @@ public class Principal {
     
     public static void main(String[] args) throws IOException {
         
-        Scanner entrada = new Scanner(System.in);
-        String accion;
-        System.out.print("Desea encriptar(e) o desencriptar(d) un mensaje?: "); 
-        accion = entrada.nextLine();
-        if(accion.equals("e")){
-            
-            System.out.print("Escriba el mensaje para encriptar: ");
-            mensajeCadena = entrada.nextLine();
-            System.out.print("Escriba una clave numérica: ");
-            clave = entrada.nextInt();
-            
-            System.out.println("Mensaje encriptado: " + encriptarMensaje(mensajeCadena,clave));
-            
-        }else if(accion.equals("d")){
-            
-            System.out.print("Escriba el mensaje para desencriptar: ");
-            mensajeCadena = entrada.nextLine();
-            System.out.print("Escriba una clave numérica: ");
-            clave = entrada.nextInt();
-            
-            System.out.println("Mensaje desencriptado: " + desencriptarMensaje(mensajeCadena,clave));
-            
-        }else{
-            System.out.print("Opción no válida.");
-            System.exit(0);
-        }
+        menuOpciones();
+        
     }
 }
