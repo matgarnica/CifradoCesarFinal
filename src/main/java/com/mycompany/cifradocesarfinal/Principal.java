@@ -10,38 +10,48 @@ import java.io.IOException;
 import java.util.Scanner;
 
 /**
- *
+ * Clase principal del cifrado César con métodos para definir alfabeto, encriptar y desencriptar mensajes
  * @author MateoG
- * @version 19/02/2019/A
+ * @version 1.5
  */
 public class Principal {
     /**
+     * Variable que guarda los caracteres que puede tener un mensaje
+     */
+    protected static char[] arrayAlfabeto;
+    /**
+     * Variable que guarda el mensaje ingresado por el usuario
+     */
+    protected static String mensajeCadena;
+    /**
+     * Variable que guarda el código ingresado por el usuario
+     */
+    protected static int clave;
+    /**
+     * Variable que divide el mensaje del usuario en caracteres individuales
+     */
+    protected static char[] mensajeCaracteres;
+    /**
+     * Variable que guarda la posición del caracter en arrayAlfabeto
+     */
+    protected static int indiceArray;
+    
+    /**
     * Método para definir el alfabeto
+    * @return arrayAlfabeto Devuelve el array con los caracteres del alfabeto
     */
     public static char[] definirAlfabeto(){
-        /**
-         * @param arrayAlfabeto El parámetro arrayAlfabeto define los caracteres que puede tener un mensaje
-         */
-        char[] arrayAlfabeto;
         arrayAlfabeto = " !\"#$%&\\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\\\]^_`abcdefghijklmnopqrstuvwxyz{|}~".toCharArray();
-        
         return arrayAlfabeto;
     }//Fin Método definirAlfabeto
     /**
     * Método que recibe el mensaje y la clave para encriptar
+    * @param mensajeCadena El parámetro mensajeCadena recibe el mensaje ingresado por el usuario
+    * @param clave El parámetro clave recibe el código para encriptar ingresado por el usuario
+    * @return mensajeCadena Devuelve el mensaje encriptado
     */
     public static String encriptarMensaje(String mensajeCadena, int clave){
-        /**
-         * @param mensajeCadena El parámetro mensajeCadena recibe el mensaje ingresado por el usuario
-         * @param clave El parámetro clave recibe el código para encriptar ingresado por el usuario
-         * @param arrayAlfabeto El parámetro arrayAlfabeto llama al método definirAlfabeto y guarda el alfabeto en un array tipo char
-         * @param mensajeCaracteres El parámetro mensajeCaracteres divide el mensaje del usuario en caracteres individuales
-         * @param indiceArray El parámetro indiceArray es de tipo entero y almacenará la posición del caracter
-         */
-        char[] arrayAlfabeto = definirAlfabeto();
-        char[] mensajeCaracteres;
-        int indiceArray;
-        
+        arrayAlfabeto = definirAlfabeto();
         mensajeCaracteres = mensajeCadena.toCharArray();
         mensajeCadena = "";
         //Se valida si la clave es negativa o mayor a la longitud del alfabeto
@@ -60,26 +70,16 @@ public class Principal {
             mensajeCaracteres[x] =  arrayAlfabeto[indiceArray]; //Se reemplaza por el caracter encriptado
             mensajeCadena = new StringBuilder().append(mensajeCadena).append(mensajeCaracteres[x]).toString(); //Concatenación del mensaje final
         }
-        /**
-         * @return mensajeCadena Devuelve el mensaje encriptado
-         */
         return mensajeCadena;
     }//Fin Método encriptarMensaje
     /**
     * Método que recibe el mensaje y la clave para desencriptar
+    * @param mensajeCadena El parámetro mensajeCadena recibe el mensaje ingresado por el usuario
+    * @param clave El parámetro clave recibe el código para desencriptar ingresado por el usuario
+    * @return mensajeCadena Devuelve el mensaje encriptado
     */
     public static String desencriptarMensaje(String mensajeCadena, int clave){
-        /**
-         * @param mensajeCadena El parámetro mensajeCadena recibe el mensaje ingresado por el usuario
-         * @param clave El parámetro clave recibe el código para desencriptar ingresado por el usuario
-         * @param arrayAlfabeto El parámetro arrayAlfabeto llama al método definirAlfabeto y guarda el alfabeto en un array tipo char
-         * @param mensajeCaracteres El parámetro mensajeCaracteres divide el mensaje del usuario en caracteres individuales
-         * @param indiceArray El parámetro indiceArray es de tipo entero y almacenará la posición del caracter
-         */
-        char[] arrayAlfabeto = definirAlfabeto();
-        char[] mensajeCaracteres;
-        int indiceArray;
-        
+        arrayAlfabeto = definirAlfabeto();
         mensajeCaracteres = mensajeCadena.toCharArray();
         mensajeCadena = "";
         //Se valida si la clave es negativa o mayor a la longitud del alfabeto
@@ -98,9 +98,6 @@ public class Principal {
             mensajeCaracteres[x] =  arrayAlfabeto[indiceArray]; //Se reemplaza por el caracter encriptado
             mensajeCadena = new StringBuilder().append(mensajeCadena).append(mensajeCaracteres[x]).toString(); //Concatenación del mensaje final
         }
-        /**
-         * @return mensajeCadena Devuelve el mensaje desencriptado
-         */
         return mensajeCadena;
     }//Fin Método desencriptarMensaje
     
@@ -112,9 +109,6 @@ public class Principal {
         accion = entrada.nextLine();
         if(accion.equals("e")){
             
-            String mensajeCadena;
-            int clave;
-            
             System.out.print("Escriba el mensaje para encriptar: ");
             mensajeCadena = entrada.nextLine();
             System.out.print("Escriba una clave numérica: ");
@@ -123,9 +117,6 @@ public class Principal {
             System.out.println("Mensaje encriptado: " + encriptarMensaje(mensajeCadena,clave));
             
         }else if(accion.equals("d")){
-            
-            String mensajeCadena;
-            int clave;
             
             System.out.print("Escriba el mensaje para desencriptar: ");
             mensajeCadena = entrada.nextLine();
