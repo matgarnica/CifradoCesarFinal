@@ -36,9 +36,18 @@ public class Principal {
      */
     protected static int indiceArray;
     
+    /**
+     * Método para mostrar en consola un menú de opciones
+     */
     public static void menuOpciones(){
         while(1==1){
+            /**
+             * Variable tipo Scanner para detectar la entrada de teclado
+             */
             Scanner entrada = new Scanner(System.in);
+            /**
+             * Variable que guarda la opción elegida por el usuario
+             */
             String accion;
             System.out.print("\nCifrado César - Elija una opción:\nEncriptar(e), Desencriptar(d), Salir(s): "); 
             accion = entrada.nextLine();
@@ -60,7 +69,7 @@ public class Principal {
                 System.out.print("Opción no válida.\n");
             }
         }
-    }
+    }//Fin Método menuOpciones
     
     /**
     * Método para definir el alfabeto
@@ -126,7 +135,9 @@ public class Principal {
         }
         return mensajeCadena;
     }//Fin Método desencriptarMensaje
-    
+    /**
+    * Método principal main
+    */
     public static void main(String[] args) throws IOException {
         
         menuOpciones();
